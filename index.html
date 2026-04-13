@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cutting Edge Barber Shop</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #222;
+      background-color: #fff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 16px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      color: #c9a84c;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #ddd;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #c9a84c;
+    }
+
+    .hero {
+      background-color: #1a1a1a;
+      color: #fff;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 40px;
+      margin-bottom: 16px;
+      color: #c9a84c;
+    }
+
+    .hero p {
+      font-size: 17px;
+      color: #ccc;
+      max-width: 560px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #c9a84c;
+      color: #1a1a1a;
+      padding: 12px 32px;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: #b8943e;
+    }
+
+    section {
+      padding: 64px 40px;
+    }
+
+    section h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+      text-align: center;
+      color: #1a1a1a;
+    }
+
+    .about {
+      background-color: #f9f9f9;
+    }
+
+    .about-inner {
+      display: flex;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 240px;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    .about-img {
+      flex: 0 0 auto;
+      width: 240px;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: #ddd;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    .services {
+      background-color: #fff;
+    }
+
+    .services-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background-color: #f4f4f4;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 24px 20px;
+      text-align: center;
+      width: 180px;
+      flex-shrink: 0;
+    }
+
+    .service-card h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .service-card .price {
+      font-size: 22px;
+      font-weight: bold;
+      color: #c9a84c;
+    }
+
+    .service-card p {
+      font-size: 13px;
+      color: #777;
+      margin-top: 6px;
+    }
+
+    .testimonials {
+      background-color: #f9f9f9;
+    }
+
+    .testimonials-grid {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 24px 20px;
+      flex: 1;
+      min-width: 220px;
+      max-width: 280px;
+    }
+
+    .testimonial-card p {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .testimonial-card .reviewer {
+      margin-top: 14px;
+      font-weight: bold;
+      font-style: normal;
+      color: #1a1a1a;
+      font-size: 14px;
+    }
+
+    .booking {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+
+    .booking h2 {
+      color: #c9a84c;
+    }
+
+    .booking-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .booking-form input,
+    .booking-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #444;
+      border-radius: 4px;
+      font-size: 15px;
+      background-color: #2a2a2a;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    .booking-form input::placeholder,
+    .booking-form textarea::placeholder {
+      color: #888;
+    }
+
+    .booking-form input:focus,
+    .booking-form textarea:focus {
+      outline: none;
+      border-color: #c9a84c;
+    }
+
+    .form-row input {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .booking-form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    footer {
+      background-color: #111;
+      color: #aaa;
+      padding: 32px 40px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    footer h4 {
+      color: #c9a84c;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    footer p, footer li {
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer a {
+      color: #aaa;
+    }
+
+    footer a:hover {
+      color: #c9a84c;
+    }
+
+    .footer-bottom {
+      background-color: #0a0a0a;
+      text-align: center;
+      padding: 14px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px 20px;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      section {
+        padding: 48px 20px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 24px;
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">&#9986; Cutting Edge</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#booking">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Cutting Edge Style for Every Gentleman</h1>
+    <p>Welcome to Cutting Edge — your local barber shop offering classic cuts, clean shaves, and a great atmosphere. Walk-ins are welcome.</p>
+    <a href="#booking" class="btn">Book Now</a>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <div class="about-inner">
+      <div class="about-text">
+        <p>
+        Welcome to Whitefield’s premier destination for modern grooming. We blend classic techniques with the latest trends to keep you looking sharp. Whether you’re after a sharp fade or a refreshing skincare treatment, our experienced stylists take the time to tailor everything to you all in a relaxed, premium setting.
+        </p>
+      </div>
+      <div class="about-img">
+        <img src="CuttingEdge.jpg" alt="Inside the barber shop" onerror="this.style.display='none';this.parentNode.innerHTML='[ barber1.jpg ]'"/>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <h2>Services &amp; Pricing</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Haircut</h3>
+        <div class="price">₹100</div>
+        <p>Classic cut, any style</p>
+      </div>
+      <div class="service-card">
+        <h3>Beard Trim</h3>
+        <div class="price">₹50</div>
+        <p>Neat shape and line-up</p>
+      </div>
+      <div class="service-card">
+        <h3>Executive Shave</h3>
+        <div class="price">₹50</div>
+        <p>Traditional straight razor</p>
+      </div>
+      <div class="service-card">
+        <h3>L'Oreal Hair Spa</h3>
+        <div class="price">₹450</div>
+        <p>Deep Conditioning, in salon treatment</p>
+      </div>
+      <div class="service-card">
+        <h3>Kids Cut</h3>
+        <div class="price">₹80</div>
+        <p>Under 12 years old</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials" id="testimonials">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p>"This salon is in Immdahalli main road, Whitefield. Staff are very friendly. They have certain combo offers which are good and worth it."</p>
+        <div class="reviewer">— Harshith Vishwanath</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Professional, neat, clean at an affordable price! Impressed"</p>
+        <div class="reviewer">— Adi 007</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Amazing experience.. superb Salon . must visit"</p>
+        <div class="reviewer">— Shashank Periwal</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="booking">
+    <h2>Book an Appointment</h2>
+    <div class="booking-form">
+      <div class="form-row">
+        <input type="text" id="name" placeholder="Your name" />
+        <input type="email" id="email" placeholder="Your email" />
+      </div>
+      <textarea id="message" placeholder="Tell us what you need (e.g. haircut + beard trim, preferred day/time)"></textarea>
+      <button class="btn" onclick="handleSubmit()">Send Message</button>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <h4>Cutting Edge</h4>
+      <p>Whitefield<br>Bangalore, Karnataka</p>
+      <p style="margin-top:8px">Phone: +918938065066<br>Email: business@cuttingedge.com</p>
+    </div>
+    <div>
+      <h4>Opening Hours</h4>
+      <ul>
+        <li>Monday – Sunday: 7:30am – 9:30pm</li>
+        <li>Tuesday: Closed</li>
+      </ul>
+    </div>
+  </footer>
+
+  <div class="footer-bottom">
+    &copy; 2026 Cutting Edge Men's Salon. All rights reserved.
+  </div>
+
+<div class="disclaimer">
+    &#1a1a1a; This website is a student project created for educational purposes only. It is not affiliated with Cutting Edge Men's Salon.  </div>
+
+  <script>
+    function handleSubmit() {
+      var name = document.getElementById("name").value.trim();
+      var email = document.getElementById("email").value.trim();
+      var message = document.getElementById("message").value.trim();
+
+      if (name === "" || email === "" || message === "") {
+        alert("Please fill in all fields before sending.");
+        return;
+      }
+
+      alert("Thanks, " + name + "! We received your message and will get back to you at " + email + " soon.");
+
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
+    }
+  </script>
+
+</body>
+</html>
